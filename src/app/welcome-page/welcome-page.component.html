@@ -1,0 +1,12 @@
+<h5>Welcome: {{userData.FirstName | titlecase}}</h5>  
+<h5> Your Details are:<br> FirstName:{{userData.FirstName| titlecase}}<br>LastName:{{userData.LastName| titlecase}}<br>Contact:{{userData.Contact| titlecase}}<br>Email:{{userData.Email}} </h5>
+<h4>Your Location:</h4>
+
+<!-- <agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map> -->
+
+<div id="googleMap" style="width:600px;height:400px;margin:0 auto;"></div>
+<div><button type="button" class= "logoutbtn"(click)='back()'>Back</button></div>
+<div><button type="button" class= "logoutbtn"(click)='logout()'>Logout</button></div>
+

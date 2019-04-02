@@ -1,0 +1,87 @@
+
+<div class="container">
+  <h2 style="color:green">signup</h2>
+  <form  [formGroup]="userForm">
+    <div class="form-group">
+      <label for="FirstName">FirstName:</label>
+      <input type="text" class="form-control" id="FirstName" placeholder="Enter FirstName"  maxlength="10" formControlName='FirstName'>
+    </div>
+    <div *ngIf="userForm.get('FirstName').errors && (userForm.get('FirstName').touched || userForm.get('FirstName').dirty)">
+      <div *ngIf="userForm.controls['FirstName'].hasError('required')"><span style="color:red">FirstName must be Filled!</span></div>
+      <div *ngIf="userForm.controls['FirstName'].hasError('pattern')"><span style="color:red">FirstName must be Alphabets!</span></div>
+    </div>
+    
+
+    
+    <div class="form-group">
+      <label for="LastName">LastName:</label>
+      <input type="text" class="form-control" id="LastName" placeholder="Enter LastName"  maxlength="10" formControlName='LastName'>
+    </div>
+    <div *ngIf="userForm.get('LastName').errors && (userForm.get('LastName').touched || userForm.get('LastName').dirty)">
+        <div *ngIf="userForm.controls['LastName'].hasError('pattern')"><span style="color:red">LastName must be Alphabets!</span></div>
+    </div>
+    
+    
+    <div class="form-group">
+      <label for="Contact">Contact:</label>
+      <input type="Contact" class="form-control" id="Contact" placeholder="Enter Contact"  maxlength="10" formControlName='Contact'>
+    </div>
+    <div *ngIf="userForm.get('Contact').errors && (userForm.get('Contact').touched || userForm.get('Contact').dirty)">
+      <div *ngIf="userForm.controls['Contact'].hasError('required')"><span style="color:red">Contact No must be Filled!</span></div>
+      <div *ngIf="userForm.controls['Contact'].hasError('pattern')"><span style="color:red">Invalid ContactNo and should be of 10 digits</span></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="Address">Address:</label>
+      <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" formControlName='Address' (onAddressChange)="handleAddressChange($event)"/><br>
+    </div>
+
+    
+    
+    <div class="form-group">
+      <label for="Email">Email:</label>
+      <input type="email" class="form-control" id="Email" placeholder="Enter Email"  maxlength="64" formControlName='Email'>
+        <div *ngIf="userForm.get('Email').errors && (userForm.get('Email').touched || userForm.get('Email').dirty)">
+          <div *ngIf="userForm.controls['Email'].hasError('required')"><span style="color:red">Email must be Filled!</span></div>
+          <div *ngIf="userForm.controls['Email'].hasError('pattern')"><span style="color:red">Invalid Email ID!</span></div>
+        </div>
+    </div>
+    
+    
+    <div class="form-group">
+      <label for="Password">Password:</label>
+      <input type="Password" class="form-control" id="Password" placeholder="Enter Password"  formControlName='Password'>
+    </div>
+      <div *ngIf="userForm.get('Password').errors && (userForm.get('Password').touched || userForm.get('Password').dirty)">
+        <div *ngIf="userForm.controls['Password'].hasError('required')"><span style="color:red">Please Enter Your Password</span></div>
+        <div *ngIf="userForm.controls['Password'].hasError('minlength')"><span style="color:blue">Minimum 6 Characters</span></div>
+        <div *ngIf="userForm.controls['Password'].hasError('maxlength')"><span style="color:blue">Maximum 16 Characters</span></div>
+      </div>
+
+      <div class="form-group">
+          <label for="ConfirmPassword">Confirm Password:</label>
+          <input type="Password" class="form-control" id="ConfirmPassword" placeholder="Re-Enter Password"  formControlName='ConfirmPassword'>
+        </div>
+      <div *ngIf="userForm.get('ConfirmPassword').dirty">
+        <div *ngIf="userForm.value.Password!=userForm.value.ConfirmPassword"><span style="color:red">Password Not Matching</span></div>
+      </div>
+
+
+    <!---<div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember"> Remember me
+      </label>
+    </div>-->
+    
+
+    
+    
+    <button type="submit" class="btn btn-primary" (click)="getvalue()">Sign Up</button>
+    <span>Already have an Account<a [routerLink]="['/login']">Login</a></span>
+  </form>
+  
+  
+ 
+</div>
+
+

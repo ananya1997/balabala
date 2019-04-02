@@ -1,0 +1,26 @@
+<form [formGroup]="userForm1">
+  <div class="container">
+    <h2 style="color: blue">Login Form</h2>
+    <label for="Email"><b>Email</b></label><br>
+    <input type="email" placeholder="Enter Email" formControlName='Email' required><br>
+    <div *ngIf="userForm1.get('Email').errors && (userForm1.get('Email').touched || userForm1.get('Email').dirty)">
+      <div *ngIf="userForm1.controls['Email'].hasError('required')"><span style="color:red">Email must be Filled!</span></div>
+      <div *ngIf="userForm1.controls['Email'].hasError('pattern')"><span style="color:red">Invalid Email ID!</span></div>
+    </div>
+
+    <label for="Password"><b>Password</b></label><br>
+    <input type="password" placeholder="Enter Password" formControlName='Password' required>
+
+    <button [disabled]="!userForm1.valid" (click)="getValue1()">Login</button>
+    
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn" (click)="clear()">Cancel</button>
+    <span class="psw">Don't have an Account? <a href="#">Signup here</a></span>
+  </div>
+</form>
